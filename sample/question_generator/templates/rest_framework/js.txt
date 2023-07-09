@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+	
+
+
+      window.addEventListener("DOMContentLoaded", function () {
+	    
+	  
+        var incorrectButtona = document.getElementById("incorrectButtona");
+
+        incorrectButtona.addEventListener("click", function () {
+          alert("incorrect answer!");
+        });
+        var incorrectButtonb = document.getElementById("incorrectButtonb");
+
+        incorrectButtonb.addEventListener("click", function () {
+          alert("incorrect answer!");
+        });
+        var correctButton = document.getElementById("correctButton");
+
+        correctButton.addEventListener("click", function () {
+          alert("Correct answer");
+        });
+
+        var incorrectButtonc = document.getElementById("incorrectButtonc");
+
+        incorrectButtonc.addEventListener("click", function () {
+          alert("incorrect answer!");
+        });
+		
+      });
+    </script>
+  </head>
+  <body>
+  
+    {% for d in data %}
+      <h3>{{ d.text }}</h3>
+
+      <button id="incorrectButtona">{{d.option1}}</button>
+      <button id="incorrectButtonb">{{d.option2}}</button>
+      <button id="correctButton">{{d.option3}}</button>
+      <button id="incorrectButtonc">{{d.option4}}</button>
+
+    {% endfor %}
+  
+  </body>
+</html>

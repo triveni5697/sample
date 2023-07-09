@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h3>Note:you have to answer in a sequence of questions</h3>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var questions = document.getElementsByClassName('question');
+      var currentIndex = 0;
+
+ 
+
+      function showQuestion(index) {
+        var currentQuestion = questions[index];
+
+ 
+
+        var incorrectButtona = currentQuestion.querySelector('.incorrectButtona');
+        var incorrectButtonb = currentQuestion.querySelector('.incorrectButtonb');
+        var correctButton = currentQuestion.querySelector('.correctButton');
+		var correctButtonText = correctButton.textContent;
+        var incorrectButtonc = currentQuestion.querySelector('.incorrectButtonc');
+
+ 
+
+        incorrectButtona.addEventListener('click', function() {
+          alert('You are wrong,correct answer is: '+correctButtonText);
+          showNextQuestion();
+        });
+
+ 
+
+        incorrectButtonb.addEventListener('click', function() {
+          alert('You are wrong,correct answer is: '+correctButtonText);
+          showNextQuestion();
+        });
+
+ 
+
+        correctButton.addEventListener('click', function() {
+          alert('Correct answer!');
+          showNextQuestion();
+        });
+
+ 
+
+        incorrectButtonc.addEventListener('click', function() {
+          alert('You are wrong,correct answer is: '+correctButtonText);
+          showNextQuestion();
+        });
+      }
+
+ 
+
+      function showNextQuestion() {
+        currentIndex++;
+        if (currentIndex < questions.length) {
+          showQuestion(currentIndex);
+        } 
+		//else {
+          //alert('End of questions');
+        //}
+      }
+
+ 
+
+      showQuestion(currentIndex);
+    });
+</script>
+</head>
+<body> 
+  {% for d in data %}
+<div class="question">
+<h3>{{ d.text }}</h3>
+
+<button class="incorrectButtona">{{d.option1}}</button>
+<button class="incorrectButtonb">{{d.option2}}</button>
+<button class="correctButton">{{d.option3}}</button>
+<button class="incorrectButtonc">{{d.option4}}</button>
+</div>
+  {% endfor %}
+<p id="summary"></p>
+</body>
+</html>

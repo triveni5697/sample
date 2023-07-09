@@ -14,12 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
-from django.contrib import admin
-from django.urls import path
 from question_generator import views
+from question_generator.views import QuestionListAPIView
+from django.contrib import admin
+from django.urls import path,include
+from rest_framework import routers
+#router = routers.DefaultRouter() 
+#router.register(r'todos', views.QuestionListAPIView, 'todo') 
+
+from django.urls import path
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
-    path('my_questions/', views.generate_question),
+    path('api/questions/', QuestionListAPIView.as_view(), name='question-list-api'),
+    # path('api/questions/',include(router.urls)),
+    path('exam/',views.exam_view, name='exam'),
 ]
